@@ -1,0 +1,42 @@
+body{
+    font-family: 'Roboto', sans-serif;
+    background: #7F7FD5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #91EAE4, #86A8E7, #7F7FD5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+html, body, main, section{
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	margin: 0;
+}
+
+*,
+*:before,
+*:after{
+    box-sizing: border-box;
+}
+
+h1,h2,h3,h4,h5,h6{
+    margin: 0;
+}
+
+p{
+    margin: 0 0 10px;
+}
+
+body, html, main{
+	min-height:85vh;
+	display:flex;
+	flex-direction:column;
+	margin:0;
+}
+
+.header{
+    height: 200px;
+    display: flex;
+}
+
+.header-inner{
+    margin:auto;
+}
