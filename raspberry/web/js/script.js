@@ -1,6 +1,6 @@
-var link;
-
-$('#wrappep').on('click', 'a', function (event) {
-	link = $(this).parent().attr('id');
-	console.log(link);
-})
+$(function(){
+    $("one").on("click", function(){
+        var id = $(this).attr("id");
+        alert(id);
+    });
+});
