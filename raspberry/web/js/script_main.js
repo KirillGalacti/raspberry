@@ -1,0 +1,1 @@
+var parameter = localStorage.getItem("#one"); 

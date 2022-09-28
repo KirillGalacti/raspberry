@@ -73,3 +73,10 @@ body, html, main{
 .arrow-bottom-3:hover path {
     fill: #000;
 }
+
+/* PDF */
+
+.pdf{
+    width:100%;
+    height: 100%;
+}
