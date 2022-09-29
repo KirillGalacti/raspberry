@@ -6,3 +6,7 @@ $(function(){
 });
 
 localStorage.setItem("#one");
+
+function newWindow(target) {
+    eel.new_window(target);
+}
