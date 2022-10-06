@@ -1,33 +1,25 @@
 from tkinter import *
-import tkinter.ttk as ttk
-
+from tkinter import Tk, W, E
+from tkinter.ttk import Frame, Button, Entry, Style
+import tkinter as ttk
+import tkinter as os
 
 class MyApp(Tk):
-    def __init__(self, master):
-        Tk.__init__(self, master)
-        container = ttk.Frame(self)
-        master=ttk.master(self)
-        container.pack(side="top", fill="both", expand=True)
+    def __init__(self):
+        Tk.__init__(self) 
+        # Основное приложение
+        window = ttk.Frame(self)
+        window.pack()
         self.frames = {}
         for F in (PageOne, PageTwo, PageThree, PageFour):
-            frame = F(container, self)
+            frame = F(window, self)
             self.frames[F] = frame
             frame.grid(row=0, column=0, sticky='NSEW')
         self.show_frame(PageOne)
-        pad=3
-        self._geom='200x200+0+0'
-        master.geometry("{0}x{1}+0+0".format(
-            master.winfo_screenwidth()-pad, master.winfo_screenheight()-pad))
-        master.bind('<Escape>',self.toggle_geom)
+
     def show_frame(self, cont):
         frame = self.frames[cont]
         frame.tkraise()
-    def toggle_geom(self,event):
-        geom=self.master.winfo_geometry()
-        print(geom,self._geom)
-        self.master.geometry(self._geom)
-        self._geom=geom
-
 
 class PageOne(ttk.Frame):
     def __init__(self, parent, controller):
@@ -35,14 +27,43 @@ class PageOne(ttk.Frame):
         ttk.Frame.__init__(self, parent)
         self.make_widget()
 
+    def open_file():
+        os.system()
+
     def make_widget(self):
-        self.cvs = Canvas(self, background="#7F7FD5")
+        Style().configure("TButton", padding=(0, 20, 0, 20), font='serif 10')
+
+        self.cvs = Canvas(self, height="1050", width="1680", background="#7F7FD5")
 
         # demo button to change page
-        btnChange = Button(self.cvs, text="Какая-то лабораторная", font="Arial 16",
-                           command=lambda: self.controller.show_frame(PageTwo),
-                           bg="#a0ccda")
-        btnChange .place(x=400, y=300, width="500", height="60")
+        btnChange1 = Button(self.cvs, text="1", width=200, command=lambda: self.controller.show_frame(PageTwo))
+        btnChange1 .grid(row=1, column=6, pady = 10)
+        btnChange2 = Button(self.cvs, text="2", width=200, command=lambda: self.controller.show_frame(PageTwo))
+        btnChange2 .grid(row=2, column=6, pady = 10)
+        btnChange3 = Button(self.cvs, text="3", width=200, command=lambda: self.controller.show_frame(PageTwo))
+        btnChange3 .grid(row=3, column=6, pady = 10)
+        btnChange4 = Button(self.cvs, text="4", width=200, command=lambda: self.controller.show_frame(PageTwo))
+        btnChange4 .grid(row=4, column=6, pady = 10)
+        btnChange5 = Button(self.cvs, text="5", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange5 .grid(row=5, column=6, pady = 10)
+        btnChange6 = Button(self.cvs, text="6", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange6 .grid(row=6, column=6, pady = 10)
+        btnChange7 = Button(self.cvs, text="7", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange7 .grid(row=7, column=6, pady = 10)
+        btnChange8 = Button(self.cvs, text="8", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange8 .grid(row=8, column=6, pady = 10)
+        btnChange9 = Button(self.cvs, text="9", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange9 .grid(row=9, column=6, pady = 10)
+        btnChange10 = Button(self.cvs, text="10", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange10 .grid(row=10, column=6, pady = 10)
+        btnChange11 = Button(self.cvs, text="11", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange11 .grid(row=11, column=6, pady = 10)
+        btnChange12 = Button(self.cvs, text="12", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange12 .grid(row=12, column=6, pady = 10)
+        btnChange13 = Button(self.cvs, text="13", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange13 .grid(row=13, column=6, pady = 10)
+        btnChange14 = Button(self.cvs, text="14", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+        btnChange14 .grid(row=14, column=6, pady = 10)
 
         self.cvs.pack()
 
@@ -59,13 +80,13 @@ class PageTwo(ttk.Frame):
     def make_widget(self):
         self.cvs = Canvas(self, width="800", height="600", background="#7F7FD5")
         # Обучени
-        button1 = ttk.Button(self, text='Обучение',
-                             command=lambda: self.controller.show_frame(PageThree))
+        button1 = ttk.Button(self, text='Обучение',  command=lambda: self.controller.show_frame(PageThree))
         button1.place(x=400, y=300, width="500", height="60")
         # Контроль
-        button2 = ttk.Button(self, text='Контроль',
-                             command=lambda: self.controller.show_frame(PageFour))
-        button2.place(x=400, y=300, width="500", height="60")
+        button2 = ttk.Button(self, text='Контроль', command=lambda: self.controller.show_frame(PageFour))
+        button2.place(x=400, y=400, width="500", height="60")
+        button1 = ttk.Button(self, text='Назад', command=lambda: self.controller.show_frame(PageOne))
+        button1.grid()
 
 class PageThree(ttk.Frame):
     def __init__(self, parent, controller):
@@ -92,5 +113,5 @@ class PageFour(ttk.Frame):
 if __name__ == '__main__':
     app = MyApp()
     app.title('Лабораторный практикум')
+    app.attributes ('-fullscreen' True)
     app.mainloop()
-
