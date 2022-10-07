@@ -1,0 +1,238 @@
+# from tkinter import *
+# from tkinter import Tk, W, E
+# from tkinter.ttk import Frame, Button, Entry, Style
+# import tkinter as ttk
+# import tkinter as os
+
+# class MyApp(ttk.Tk):
+#     def __init__(self, master):
+#         self.window = ttk.Tk()
+#         self.fullScreenState = False
+#         self.window.attributes("-fullscreen", self.fullScreenState)
+
+#         self.w, self.h = self.window.winfo_screenwidth(), self.window.winfo_screenheight()
+#         self.window.geometry("%dx%d" % (self.w, self.h))
+        
+#         self.window.bind("<F11>", self.toggleFullScreen)
+#         self.window.bind("<Escape>", self.quitFullScreen)
+
+#         self.make_widget_startPage()
+        
+#     # Стартовая страница с выбором желаемой лабораторной работы
+#     def make_widget_startPage(self):
+#         Style().configure("TButton", padding=(0, 20, 0, 20), font='serif 10')
+
+#         self.cvs = Canvas(self, width="800", height="600", background="#7F7FD5")
+
+#         btnChange1 = Button(self.cvs, text="1", width=200, command=lambda: self.choicePage)
+#         btnChange1 .grid(row=1, column=6, pady = 10)
+#         btnChange2 = Button(self.cvs, text="2", width=200, command=lambda: self.choicePage)
+#         btnChange2 .grid(row=2, column=6, pady = 10)
+#         btnChange3 = Button(self.cvs, text="3", width=200, command=lambda: self.choicePage)
+#         btnChange3 .grid(row=3, column=6, pady = 10)
+#         btnChange4 = Button(self.cvs, text="4", width=200, command=lambda: self.choicePage)
+#         btnChange4 .grid(row=4, column=6, pady = 10)
+#         btnChange5 = Button(self.cvs, text="5", width=200, command=lambda: self.choicePage)
+#         btnChange5 .grid(row=5, column=6, pady = 10)
+#         btnChange6 = Button(self.cvs, text="6", width=200, command=lambda: self.choicePage)
+#         btnChange6 .grid(row=6, column=6, pady = 10)
+#         btnChange7 = Button(self.cvs, text="7", width=200, command=lambda: self.choicePage)
+#         btnChange7 .grid(row=7, column=6, pady = 10)
+#         btnChange8 = Button(self.cvs, text="8", width=200, command=lambda: self.choicePage)
+#         btnChange8 .grid(row=8, column=6, pady = 10)
+#         btnChange9 = Button(self.cvs, text="9", width=200, command=lambda: self.choicePage)
+#         btnChange9 .grid(row=9, column=6, pady = 10)
+#         btnChange10 = Button(self.cvs, text="10", width=200, command=lambda: self.choicePage)
+#         btnChange10 .grid(row=10, column=6, pady = 10)
+#         btnChange11 = Button(self.cvs, text="11", width=200, command=lambda: self.choicePage)
+#         btnChange11 .grid(row=11, column=6, pady = 10)
+#         btnChange12 = Button(self.cvs, text="12", width=200, command=lambda: self.choicePage)
+#         btnChange12 .grid(row=12, column=6, pady = 10)
+#         btnChange13 = Button(self.cvs, text="13", width=200, command=lambda: self.choicePage)
+#         btnChange13 .grid(row=13, column=6, pady = 10)
+#         btnChange14 = Button(self.cvs, text="14", width=200, command=lambda: self.choicePage)
+#         btnChange14 .grid(row=14, column=6, pady = 10)
+
+#         self.cvs.pack()
+    
+#     # Страница с выбором режима
+#     def choicePage(self): 
+#         ttk.Frame.__init__(self)
+#         self.make_widget_choicePage()
+
+#     def make_widget_choicePage(self):
+#         self.cvs = Canvas(self, width="800", height="600", background="#7F7FD5")
+#         # Обучени
+#         button1 = ttk.Button(self, text='Обучение')
+#         button1.place(x=400, y=300, width="500", height="60")
+#         # Контроль
+#         button2 = ttk.Button(self, text='Контроль')
+#         button2.place(x=400, y=400, width="500", height="60")
+#         button1 = ttk.Button(self, text='Назад', command=lambda: self.choicePage)
+#         button1.grid()
+    
+#     # Полноэкранный режим
+#     def toggleFullScreen(self, event):
+#         self.fullScreenState = not self.fullScreenState
+#         self.window.attributes("-fullscreen", self.fullScreenState)
+
+#     def quitFullScreen(self, event):
+#         self.fullScreenState = False
+#         self.window.attributes("-fullscreen", self.fullScreenState)
+
+# root = Tk()
+# MyApp(root)
+# root.title("Лабораторный практикум")
+# root.mainloop()
+
+# class Scrollbar(ttk.Tk):
+#     def __init__(self):
+#         super().__init__()
+#         self.scroll_x = ttk.Scrollbar(self, orient=ttk.HORIZONTAL)
+#         self.scroll_y = ttk.Scrollbar(self, orient=ttk.VERTICAL)
+#         self.canvas = ttk.Canvas(self, width=300, height=100,
+#                                 xscrollcommand=self.scroll_x.set,
+#                                 yscrollcommand=self.scroll_y.set)
+#         self.scroll_x.config(command=self.canvas.xview)
+#         self.scroll_y.config(command=self.canvas.yview)
+
+#         self.scroll_x.grid(row=1, column=0, sticky="we")
+#         self.scroll_y.grid(row=0, column=1, sticky="ns")
+
+#         self.rowconfigure(0, weight=1)
+#         self.columnconfigure(0, weight=1)
+#         self.update_idletasks()
+#         self.minsize(self.winfo_width(), self.winfo_height())
+
+#     def resize(self, event):
+#         region = self.canvas.bbox(ttk.ALL)
+#         self.canvas.configure(scrollregion=region)
+
+# class MyApp(Tk):
+#     def __init__(self):
+#         Tk.__init__(self)
+#         container = ttk.Frame(self)
+#         # self.window = ttk.Tk()
+#         # self.fullScreenState = False
+#         # self.window.attributes("-fullscreen", True)
+
+#         # self.w, self.h = self.window.winfo_screenwidth(), self.window.winfo_screenheight()
+#         # self.window.geometry("%dx%d" % (self.w, self.h))
+        
+#         # self.window.bind("<F11>", self.toggleFullScreen)
+#         # self.window.bind("<Escape>", self.quitFullScreen)
+
+#         container.pack(side="top", fill="both", expand=True)
+#         self.frames = {}
+#         for F in (PageOne, PageTwo, PageThree, PageFour):
+#             frame = F(container, self)
+#             self.frames[F] = frame
+#             frame.grid(row=0, column=0, sticky='NSEW')
+#         self.show_frame(PageOne)
+
+#     def show_frame(self, cont):
+#         frame = self.frames[cont]
+#         frame.tkraise()
+
+#     def toggleFullScreen(self, event):
+#         self.fullScreenState = not self.fullScreenState
+#         self.window.attributes("-fullscreen", self.fullScreenState)
+
+#     def quitFullScreen(self, event):
+#         self.fullScreenState = False
+#         self.window.attributes("-fullscreen", self.fullScreenState)
+
+# class PageOne(ttk.Frame):
+#     def __init__(self, parent, controller):
+#         self.controller = controller
+#         ttk.Frame.__init__(self, parent)
+#         self.make_widget()
+
+#     def open_file():
+#         os.system()
+
+#     def make_widget(self):
+#         Style().configure("TButton", padding=(0, 20, 0, 20), font='serif 10')
+
+#         self.cvs = Canvas(self, width="800", height="600", background="#7F7FD5")
+
+#         # demo button to change page
+#         btnChange1 = Button(self.cvs, text="1", width=200, command=lambda: self.controller.show_frame(PageTwo))
+#         btnChange1 .grid(row=1, column=6, pady = 10)
+#         btnChange2 = Button(self.cvs, text="2", width=200, command=lambda: self.controller.show_frame(PageTwo))
+#         btnChange2 .grid(row=2, column=6, pady = 10)
+#         btnChange3 = Button(self.cvs, text="3", width=200, command=lambda: self.controller.show_frame(PageTwo))
+#         btnChange3 .grid(row=3, column=6, pady = 10)
+#         btnChange4 = Button(self.cvs, text="4", width=200, command=lambda: self.controller.show_frame(PageTwo))
+#         btnChange4 .grid(row=4, column=6, pady = 10)
+#         btnChange5 = Button(self.cvs, text="5", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange5 .grid(row=5, column=6, pady = 10)
+#         btnChange6 = Button(self.cvs, text="6", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange6 .grid(row=6, column=6, pady = 10)
+#         btnChange7 = Button(self.cvs, text="7", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange7 .grid(row=7, column=6, pady = 10)
+#         btnChange8 = Button(self.cvs, text="8", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange8 .grid(row=8, column=6, pady = 10)
+#         btnChange9 = Button(self.cvs, text="9", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange9 .grid(row=9, column=6, pady = 10)
+#         btnChange10 = Button(self.cvs, text="10", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange10 .grid(row=10, column=6, pady = 10)
+#         btnChange11 = Button(self.cvs, text="11", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange11 .grid(row=11, column=6, pady = 10)
+#         btnChange12 = Button(self.cvs, text="12", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange12 .grid(row=12, column=6, pady = 10)
+#         btnChange13 = Button(self.cvs, text="13", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange13 .grid(row=13, column=6, pady = 10)
+#         btnChange14 = Button(self.cvs, text="14", width=200, command=lambda: self.controller.show_frame(PageTwo),)
+#         btnChange14 .grid(row=14, column=6, pady = 10)
+
+#         self.cvs.pack()
+
+#         def change_page(self):
+#             pass
+
+
+# class PageTwo(ttk.Frame):
+#     def __init__(self, parent, controller):
+#         self.controller = controller  
+#         ttk.Frame.__init__(self, parent)
+#         self.make_widget()
+
+#     def make_widget(self):
+#         self.cvs = Canvas(self, width="800", height="600", background="#7F7FD5")
+#         # Обучени
+#         button1 = ttk.Button(self, text='Обучение',  command=lambda: self.controller.show_frame(PageThree))
+#         button1.place(x=400, y=300, width="500", height="60")
+#         # Контроль
+#         button2 = ttk.Button(self, text='Контроль', command=lambda: self.controller.show_frame(PageFour))
+#         button2.place(x=400, y=400, width="500", height="60")
+#         button1 = ttk.Button(self, text='Назад', command=lambda: self.controller.show_frame(PageOne))
+#         button1.grid()
+
+# class PageThree(ttk.Frame):
+#     def __init__(self, parent, controller):
+#         self.controller = controller  
+#         ttk.Frame.__init__(self, parent)
+#         self.make_widget()
+
+#     def make_widget(self):
+#         button3 = ttk.Button(self, text='Назад',
+#                              command=lambda: self.controller.show_frame(PageTwo))
+#         button3.grid()
+
+# class PageFour(ttk.Frame):
+#     def __init__(self, parent, controller):
+#         self.controller = controller  
+#         ttk.Frame.__init__(self, parent)
+#         self.make_widget()
+
+#     def make_widget(self):
+#         button1 = ttk.Button(self, text='Назад',
+#                              command=lambda: self.controller.show_frame(PageTwo))
+#         button1.grid()
+
+# if __name__ == '__main__':
+#     app = MyApp()
+#     app.title('Лабораторный практикум')
+#     #app.attributes('-fullscreen', True)
+#     app.mainloop()
