@@ -70,18 +70,32 @@ QLabel{
          <x>0</x>
          <y>0</y>
          <width>819</width>
-         <height>1200</height>
+         <height>1222</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_2">
         <item row="7" column="0">
-         <widget class="QPushButton" name="pushButton_8">
+         <widget class="QPushButton" name="pushButton_9">
           <property name="text">
-           <string>7. Регулируемый гидравлический дроссель.</string>
+           <string>6. Гидрораспределители.</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
+        <item row="10" column="0">
+         <widget class="QPushButton" name="pushButton_10">
+          <property name="text">
+           <string>9. Регулятор расхода.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="9" column="0">
+         <widget class="QPushButton" name="pushButton_11">
+          <property name="text">
+           <string>8. Регулируемый гидравлический дроссель с обратным клапаном.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="5" column="0">
          <widget class="QPushButton" name="pushButton_4">
           <property name="styleSheet">
            <string notr="true"/>
@@ -91,91 +105,14 @@ QLabel{
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
-         <widget class="QPushButton" name="pushButton_3">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>2. Характеристика объемного нерегулируемого насоса.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="3" column="0">
-         <widget class="QPushButton" name="pushButton_5">
-          <property name="text">
-           <string>3. Технические характеристики гидроцилиндра с односторонним штоком. Давление.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="5" column="0">
-         <widget class="QPushButton" name="pushButton_7">
-          <property name="text">
-           <string>5. Объемный гидромотор.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="0">
-         <widget class="QPushButton" name="pushButton">
-          <property name="styleSheet">
-           <string notr="true"/>
-          </property>
-          <property name="text">
-           <string>1. Применение гидравлики. Физические основы гидравлики. Гидравлические символы и стандарты. 
-Виды и свойства гидравлических жидкостей.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="14" column="0">
-         <widget class="QPushButton" name="pushButton_6">
-          <property name="text">
-           <string>14. Управляемые обратные клапана.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="6" column="0">
-         <widget class="QPushButton" name="pushButton_9">
-          <property name="text">
-           <string>6. Гидрораспределители.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="9" column="0">
-         <widget class="QPushButton" name="pushButton_10">
-          <property name="text">
-           <string>9. Регулятор расхода.</string>
-          </property>
-         </widget>
-        </item>
         <item row="8" column="0">
-         <widget class="QPushButton" name="pushButton_11">
+         <widget class="QPushButton" name="pushButton_8">
           <property name="text">
-           <string>8. Регулируемый гидравлический дроссель с обратным клапаном.</string>
+           <string>7. Регулируемый гидравлический дроссель.</string>
           </property>
          </widget>
         </item>
         <item row="12" column="0">
-         <widget class="QPushButton" name="pushButton_15">
-          <property name="text">
-           <string>12. Редукционный клапан.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="10" column="0">
-         <widget class="QPushButton" name="pushButton_13">
-          <property name="text">
-           <string>10. Предохранительный клапан прямого действия.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="13" column="0">
-         <widget class="QPushButton" name="pushButton_14">
-          <property name="text">
-           <string>13. Компоновка и работа дифференциальной схемы.</string>
-          </property>
-         </widget>
-        </item>
-        <item row="11" column="0">
          <widget class="QPushButton" name="pushButton_12">
           <property name="text">
            <string>11. Регулирование давления в гидросистеме при помощи нескольких предохранительных клапанов.</string>
@@ -196,6 +133,119 @@ QLabel{
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
+         </widget>
+        </item>
+        <item row="14" column="0">
+         <widget class="QPushButton" name="pushButton_14">
+          <property name="text">
+           <string>13. Компоновка и работа дифференциальной схемы.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="13" column="0">
+         <widget class="QPushButton" name="pushButton_15">
+          <property name="text">
+           <string>12. Редукционный клапан.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="11" column="0">
+         <widget class="QPushButton" name="pushButton_13">
+          <property name="text">
+           <string>10. Предохранительный клапан прямого действия.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="3" column="0">
+         <widget class="QPushButton" name="pushButton_3">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>2. Характеристика объемного нерегулируемого насоса.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="4" column="0">
+         <widget class="QPushButton" name="pushButton_5">
+          <property name="text">
+           <string>3. Технические характеристики гидроцилиндра с односторонним штоком. Давление.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="15" column="0">
+         <widget class="QPushButton" name="pushButton_6">
+          <property name="text">
+           <string>14. Управляемые обратные клапана.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="6" column="0">
+         <widget class="QPushButton" name="pushButton_7">
+          <property name="text">
+           <string>5. Объемный гидромотор.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="2" column="0">
+         <widget class="QPushButton" name="pushButton">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+          <property name="text">
+           <string>1. Применение гидравлики. Физические основы гидравлики. Гидравлические символы и стандарты. 
+Виды и свойства гидравлических жидкостей.</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QStackedWidget" name="stackedWidget">
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="page">
+           <widget class="QPushButton" name="pushButton_2">
+            <property name="geometry">
+             <rect>
+              <x>280</x>
+              <y>0</y>
+              <width>75</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_2">
+           <widget class="QPushButton" name="pushButton_16">
+            <property name="geometry">
+             <rect>
+              <x>190</x>
+              <y>0</y>
+              <width>75</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+           <widget class="QPushButton" name="pushButton_17">
+            <property name="geometry">
+             <rect>
+              <x>390</x>
+              <y>0</y>
+              <width>75</width>
+              <height>23</height>
+             </rect>
+            </property>
+            <property name="text">
+             <string>PushButton</string>
+            </property>
+           </widget>
+          </widget>
          </widget>
         </item>
        </layout>
