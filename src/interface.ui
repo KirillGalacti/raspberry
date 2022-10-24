@@ -90,26 +90,94 @@
            <number>6</number>
           </property>
           <item>
-           <widget class="QPushButton" name="btn_page_1">
-            <property name="styleSheet">
-             <string notr="true">QPushButton{
-	background-color: #fff;
+           <widget class="QFrame" name="frame_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="0,0">
+             <property name="spacing">
+              <number>5</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>5</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>5</number>
+             </property>
+             <item>
+              <widget class="QPushButton" name="btn_page_1">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
+	background-color: rgb(185, 0, 3);
+border-raduis: 10px
 }</string>
-            </property>
-            <property name="text">
-             <string/>
-            </property>
-            <property name="icon">
-             <iconset>
-              <normaloff>icons/home.svg</normaloff>icons/home.svg</iconset>
-            </property>
-            <property name="autoRepeatDelay">
-             <number>300</number>
-            </property>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+               <property name="icon">
+                <iconset>
+                 <normaloff>icons/home.svg</normaloff>icons/home.svg</iconset>
+               </property>
+               <property name="checkable">
+                <bool>false</bool>
+               </property>
+               <property name="autoRepeatDelay">
+                <number>300</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_hand_robot">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">background-color:rgb(255, 255, 255) </string>
+               </property>
+               <property name="text">
+                <string>рука</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
            </widget>
           </item>
           <item>
            <widget class="QLabel" name="label_3">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
             <property name="styleSheet">
              <string notr="true">QLabel{
 	color:white;
@@ -318,7 +386,7 @@ QLabel{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>762</width>
+                      <width>92</width>
                       <height>586</height>
                      </rect>
                     </property>
@@ -448,7 +516,7 @@ QLabel{
                      <rect>
                       <x>0</x>
                       <y>0</y>
-                      <width>762</width>
+                      <width>92</width>
                       <height>586</height>
                      </rect>
                     </property>
@@ -559,7 +627,7 @@ QLabel{
                </widget>
               </widget>
              </item>
-             <item alignment="Qt::AlignRight|Qt::AlignBottom">
+             <item>
               <widget class="QFrame" name="size_grip">
                <property name="minimumSize">
                 <size>
