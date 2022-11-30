@@ -52,6 +52,8 @@ class MainWindow(QMainWindow):
         # PAGE 3
         self.ui.btn_page_3.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_3))
 
+        #PAGE HAND ROBOT
+        self.ui.btn_page_robot_hand.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_robot_hand))
 
         ## SHOW ==> MAIN WINDOW
         ########################################################################
