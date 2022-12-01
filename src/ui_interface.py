@@ -360,99 +360,6 @@ class Ui_MainWindow(object):
         self.gridLayout.addWidget(self.scrollArea, 0, 0, 1, 1)
 
         self.stackedWidget.addWidget(self.page_3)
-        self.page_robot_hand = QWidget()
-        self.page_robot_hand.setObjectName(u"page_robot_hand")
-        self.page_robot_hand.setStyleSheet(u"QPushButton{\n"
-"	color: white;\n"
-"	background:rgb(85, 170, 255);\n"
-"	height: 35px;\n"
-" 	border-radius:10px;\n"
-"	font-size:15px;\n"
-"}\n"
-"\n"
-"QLabel{\n"
-"	font-size: 20px;\n"
-"	color: white;\n"
-"}")
-        self.verticalLayout_5 = QVBoxLayout(self.page_robot_hand)
-        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
-        self.frame_4 = QFrame(self.page_robot_hand)
-        self.frame_4.setObjectName(u"frame_4")
-        self.frame_4.setFrameShape(QFrame.StyledPanel)
-        self.frame_4.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_6 = QVBoxLayout(self.frame_4)
-        self.verticalLayout_6.setObjectName(u"verticalLayout_6")
-        self.frame_5 = QFrame(self.frame_4)
-        self.frame_5.setObjectName(u"frame_5")
-        self.frame_5.setFrameShape(QFrame.StyledPanel)
-        self.frame_5.setFrameShadow(QFrame.Raised)
-        self.gridLayout_3 = QGridLayout(self.frame_5)
-        self.gridLayout_3.setObjectName(u"gridLayout_3")
-        self.pushButton_29 = QPushButton(self.frame_5)
-        self.pushButton_29.setObjectName(u"pushButton_29")
-
-        self.gridLayout_3.addWidget(self.pushButton_29, 1, 0, 1, 1)
-
-        self.pushButton_30 = QPushButton(self.frame_5)
-        self.pushButton_30.setObjectName(u"pushButton_30")
-
-        self.gridLayout_3.addWidget(self.pushButton_30, 1, 1, 1, 1)
-
-        self.label = QLabel(self.frame_5)
-        self.label.setObjectName(u"label")
-        self.label.setAlignment(Qt.AlignCenter)
-
-        self.gridLayout_3.addWidget(self.label, 0, 0, 1, 2)
-
-
-        self.verticalLayout_6.addWidget(self.frame_5)
-
-        self.frame_6 = QFrame(self.frame_4)
-        self.frame_6.setObjectName(u"frame_6")
-        self.frame_6.setFrameShape(QFrame.StyledPanel)
-        self.frame_6.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_7 = QVBoxLayout(self.frame_6)
-        self.verticalLayout_7.setObjectName(u"verticalLayout_7")
-        self.label_4 = QLabel(self.frame_6)
-        self.label_4.setObjectName(u"label_4")
-        self.label_4.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_7.addWidget(self.label_4)
-
-        self.horizontalSlider = QSlider(self.frame_6)
-        self.horizontalSlider.setObjectName(u"horizontalSlider")
-        self.horizontalSlider.setOrientation(Qt.Horizontal)
-
-        self.verticalLayout_7.addWidget(self.horizontalSlider)
-
-
-        self.verticalLayout_6.addWidget(self.frame_6)
-
-        self.frame_7 = QFrame(self.frame_4)
-        self.frame_7.setObjectName(u"frame_7")
-        self.frame_7.setFrameShape(QFrame.StyledPanel)
-        self.frame_7.setFrameShadow(QFrame.Raised)
-        self.verticalLayout_8 = QVBoxLayout(self.frame_7)
-        self.verticalLayout_8.setObjectName(u"verticalLayout_8")
-        self.label_5 = QLabel(self.frame_7)
-        self.label_5.setObjectName(u"label_5")
-        self.label_5.setAlignment(Qt.AlignCenter)
-
-        self.verticalLayout_8.addWidget(self.label_5)
-
-        self.turn = QSlider(self.frame_7)
-        self.turn.setObjectName(u"turn")
-        self.turn.setOrientation(Qt.Horizontal)
-
-        self.verticalLayout_8.addWidget(self.turn)
-
-
-        self.verticalLayout_6.addWidget(self.frame_7)
-
-
-        self.verticalLayout_5.addWidget(self.frame_4)
-
-        self.stackedWidget.addWidget(self.page_robot_hand)
         self.page_1 = QWidget()
         self.page_1.setObjectName(u"page_1")
         self.page_1.setStyleSheet(u"QPushButton{\n"
@@ -537,7 +444,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
 
-        self.stackedWidget.setCurrentIndex(3)
+        self.stackedWidget.setCurrentIndex(1)
 
 
         QMetaObject.connectSlotsByName(MainWindow)
@@ -551,7 +458,7 @@ class Ui_MainWindow(object):
         self.minimize_window_button.setText("")
         self.restore_window_button.setText("")
         self.close_window_button.setText("")
-        self.pushButton_23.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.pushButton_23.setText("")
         self.pushButton_22.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_24.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_20.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
@@ -565,7 +472,7 @@ class Ui_MainWindow(object):
         self.pushButton_2.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_27.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_28.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
+        self.pushButton_4.setText(QCoreApplication.translate("MainWindow", u"1. ", None))
         self.pushButton_6.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_13.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_5.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
@@ -579,11 +486,6 @@ class Ui_MainWindow(object):
         self.pushButton_10.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_9.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
         self.pushButton_15.setText(QCoreApplication.translate("MainWindow", u"PushButton", None))
-        self.pushButton_29.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0445\u0432\u0430\u0442\u0438\u0442\u044c", None))
-        self.pushButton_30.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0442\u043f\u0443\u0441\u0442\u0438\u0442\u044c", None))
-        self.label.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043b\u0435\u0449\u043d\u044f \u0440\u043e\u0431\u043e\u0442\u0430", None))
-        self.label_4.setText(QCoreApplication.translate("MainWindow", u"\u0421\u0433\u0438\u0431\u0430\u043d\u0438\u0435 \u0440\u043e\u0431\u043e\u0442\u0430", None))
-        self.label_5.setText(QCoreApplication.translate("MainWindow", u"\u041f\u043e\u0432\u043e\u0440\u043e\u0442 \u043e\u0441\u043d\u043e\u0432\u0430\u043d\u0438\u044f \u0440\u043e\u0431\u043e\u0442\u0430", None))
         self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u0443\u044e\u0449\u0438\u0439 \u0432\u0430\u0441 \u0440\u0430\u0437\u0434\u0435\u043b", None))
         self.btn_page_3.setText(QCoreApplication.translate("MainWindow", u"\u041e\u0431\u0443\u0447\u0435\u043d\u0438\u0435", None))
         self.btn_page_2.setText(QCoreApplication.translate("MainWindow", u"\u041a\u043e\u043d\u0442\u0440\u043e\u043b\u044c", None))
