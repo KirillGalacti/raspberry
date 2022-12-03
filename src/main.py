@@ -10,6 +10,7 @@
 import sys
 import os
 from PySide2 import *
+
 ########################################################################
 # IMPORT GUI FILE
 from ui_interface import *
@@ -42,20 +43,43 @@ class MainWindow(QMainWindow):
 
         ## PAGES
         ########################################################################
+        self.ui.btn_page_home.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.home))
 
-        # PAGE 1
-        self.ui.btn_page_1.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_1))
+        # PAGE LEARN
+        ########################################################################
+        self.ui.one_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_one_learn))
 
-        # PAGE 2
-        self.ui.btn_page_2.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_2))
+        self.ui.two_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_two_learn))
 
-        # PAGE 3
-        self.ui.btn_page_3.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_3))
+        self.ui.three_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_three_learn))
+
+        self.ui.four_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_four_learn))
+
+        self.ui.five_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_five_learn))
+
+        self.ui.six_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_six_learn))
+
+        self.ui.seven_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_seven_learn))
+
+        self.ui.eight_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_eight_learn))
+
+        self.ui.nine_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_nine_learn))
+
+        self.ui.ten_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_ten_learn))
+
+        self.ui.eleven_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_eleven_learn))
+
+        self.ui.twelve_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_twelve_learn))
+
+        self.ui.theerteen_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_theerteen_learn))
+
+        self.ui.fourteen_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_fourteen_learn))
 
         ## SHOW ==> MAIN WINDOW
         ########################################################################
         self.show()
         ## ==> END ##
+        
 
 
 ########################################################################

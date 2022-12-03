@@ -1,46 +1,43 @@
+from tkinter import*
+import RPi.GPIO as GPIO
+import time
+
 import smbus
-from time import sleep
 
-i2c = smbus.SMBus(1)
-SLAVE_ADD_1 = 0x08 # Arduino I2C address
-SLAVE_ADD_2 = 0x09 # Arduino I2C address
-SLAVE_ADD_3 = 0x0a # Arduino I2C address
+bus = smbus.SMBus(1)
 
-def beep(times, delay):
-  for x in range(times):
-    BUZZER.on()
-    sleep(delay)
-    BUZZER.off()
-    sleep(delay)
+SLAVE_ADDRESS_1 = 0x08
+SLAVE_ADDRESS_2 = 0x09
+SLAVE_ADDRESS_3 = 0x0a
 
-def writeI2C(data):
-  i2c.write_byte(SLAVE_ADD_1, data)
-  i2c.write_byte(SLAVE_ADD_2, data)
-  i2c.write_byte(SLAVE_ADD_3, data)
+class App:
 
-def readI2C():
-  inData_1 = i2c.read_byte(SLAVE_ADD_1)
-  return inData_1
-  inData_2 = i2c.read_byte(SLAVE_ADD_2)
-  return inData_2
-  inData_3 = i2c.read_byte(SLAVE_ADD_3)
-  return inData_3
+def __init__(self, master):
 
-prevI2CData = 0
-beep(2, 0.07)
+def FirstServo(self):
+S_1 = scale_first.get()
+bus.write_byte_data(SLAVE_ADDRESS_1, S_1, S_1 )
 
-try:
-  while True:
-    if SW1.is_pressed:
-      writeI2C(1)
-      SW1.wait_for_release()
+def SecondServo(self):
+S_2 = scale_second.get()
+bus.write_byte_data(SLAVE_ADDRESS_2, S_2, S_2 )
 
-    elif SW2.is_pressed:
-      writeI2C(2)
-      SW2.wait_for_release()
+def ThirdServo(self):
+S_3 = scale_third.get()
+bus.write_byte_data(SLAVE_ADDRESS_3, S_3, S_3 )
 
-    elif SW3.is_pressed:
-      writeI2C(3)
-      SW3.wait_for_release()
+frame = Frame(master)
+frame.pack()
 
-      sleep(0.1)
+scale_first = Scale(frame, label="Клешня", from_=0, to=180, orient=HORIZONTAL, command=FirstServo)
+scale_first.grid(row=1, column=1)
+scale_second = Scale(frame, label="Сгибание", from_=0, to=180, orient=HORIZONTAL, command=SecondServo)
+scale_second.grid(row=2, column=1)
+scale_third = Scale(frame, label="Поворот основания" from_=0, to=180, orient=HORIZONTAL, command=ThirdServo)
+scale_third.grid(row=3, column=1)
+
+root = Tk()
+root.wm_title('Управление роботизированным модулем')
+app = App(root)
+root.geometry("200x150+0+0")
+root.mainloop()
