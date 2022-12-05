@@ -123,10 +123,10 @@ class Block:
         self.ans = scrolledtext.ScrolledText(window, width=75, height=15)
         self.ans.insert(tk.INSERT,
                         f'''
-        {Text_a[5 * index + 0]}
-        {Text_a[5 * index + 1]}
-        {Text_a[5 * index + 2]}
-        {Text_a[5 * index + 3]}
+        {Text_a[4 * index + 0]}
+        {Text_a[4 * index + 1]}
+        {Text_a[4 * index + 2]}
+        {Text_a[4 * index + 3]}
         '''
                         )
 
@@ -134,7 +134,8 @@ class Block:
 
         self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
-        self.box1 = IO.input(26)
+        if IO.input(26) == GPIO.HIGH:
+            self.check1 = tk.IntVar()
 
         self.check2 = tk.IntVar()
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
