@@ -83,10 +83,7 @@ class Ui_MainWindow(object):
         self.btn_page_robot_hand.setObjectName(u"btn_page_robot_hand")
         sizePolicy1.setHeightForWidth(self.btn_page_robot_hand.sizePolicy().hasHeightForWidth())
         self.btn_page_robot_hand.setSizePolicy(sizePolicy1)
-        self.btn_page_robot_hand.setStyleSheet(u"background-color: rgb(185, 0, 3);")
-        icon1 = QIcon()
-        icon1.addFile(u"icons/robotic_arm.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.btn_page_robot_hand.setIcon(icon1)
+        self.btn_page_robot_hand.setStyleSheet(u"background-color:rgb(255, 255, 255) ")
 
         self.horizontalLayout_5.addWidget(self.btn_page_robot_hand)
 
@@ -122,25 +119,25 @@ class Ui_MainWindow(object):
         self.horizontalLayout_4.setContentsMargins(0, 5, 0, 5)
         self.minimize_window_button = QPushButton(self.frame)
         self.minimize_window_button.setObjectName(u"minimize_window_button")
-        icon2 = QIcon()
-        icon2.addFile(u":/icons/icons/arrow-down-left.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.minimize_window_button.setIcon(icon2)
+        icon1 = QIcon()
+        icon1.addFile(u":/icons/icons/arrow-down-left.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.minimize_window_button.setIcon(icon1)
 
         self.horizontalLayout_4.addWidget(self.minimize_window_button)
 
         self.restore_window_button = QPushButton(self.frame)
         self.restore_window_button.setObjectName(u"restore_window_button")
-        icon3 = QIcon()
-        icon3.addFile(u":/icons/icons/maximize-2.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.restore_window_button.setIcon(icon3)
+        icon2 = QIcon()
+        icon2.addFile(u":/icons/icons/maximize-2.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.restore_window_button.setIcon(icon2)
 
         self.horizontalLayout_4.addWidget(self.restore_window_button)
 
         self.close_window_button = QPushButton(self.frame)
         self.close_window_button.setObjectName(u"close_window_button")
-        icon4 = QIcon()
-        icon4.addFile(u":/icons/icons/x.svg", QSize(), QIcon.Normal, QIcon.Off)
-        self.close_window_button.setIcon(icon4)
+        icon3 = QIcon()
+        icon3.addFile(u":/icons/icons/x.svg", QSize(), QIcon.Normal, QIcon.Off)
+        self.close_window_button.setIcon(icon3)
 
         self.horizontalLayout_4.addWidget(self.close_window_button)
 
@@ -222,7 +219,7 @@ class Ui_MainWindow(object):
         self.scrollArea_2.setWidgetResizable(True)
         self.scrollAreaWidgetContents_2 = QWidget()
         self.scrollAreaWidgetContents_2.setObjectName(u"scrollAreaWidgetContents_2")
-        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 87, 87))
+        self.scrollAreaWidgetContents_2.setGeometry(QRect(0, 0, 1094, 679))
         self.verticalLayout_4 = QVBoxLayout(self.scrollAreaWidgetContents_2)
         self.verticalLayout_4.setObjectName(u"verticalLayout_4")
         self.textBrowser = QTextBrowser(self.scrollAreaWidgetContents_2)
@@ -256,7 +253,7 @@ class Ui_MainWindow(object):
         self.scrollArea.setWidgetResizable(True)
         self.scrollAreaWidgetContents = QWidget()
         self.scrollAreaWidgetContents.setObjectName(u"scrollAreaWidgetContents")
-        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1098, 687))
+        self.scrollAreaWidgetContents.setGeometry(QRect(0, 0, 1094, 679))
         self.verticalLayout_3 = QVBoxLayout(self.scrollAreaWidgetContents)
         self.verticalLayout_3.setObjectName(u"verticalLayout_3")
         self.label = QLabel(self.scrollAreaWidgetContents)
@@ -399,7 +396,7 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.btn_page_home.setText("")
-        self.btn_page_robot_hand.setText("")
+        self.btn_page_robot_hand.setText(QCoreApplication.translate("MainWindow", u"\u0440\u0443\u043a\u0430", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u043d\u044b\u0439 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443\u043c", None))
         self.minimize_window_button.setText("")
         self.restore_window_button.setText("")
@@ -407,8 +404,8 @@ class Ui_MainWindow(object):
         self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
-"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:8.25pt; font-weight:400; font-style:normal;\">\n"
-"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" font-size:7.8pt; color:#ffffff;\">12</span></p></body></html>", None))
+"</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
+"<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">12</span></p></body></html>", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u0443\u044e\u0449\u0438\u0439 \u0432\u0430\u0441 \u0440\u0430\u0437\u0434\u0435\u043b", None))
         self.one_learn.setText(QCoreApplication.translate("MainWindow", u"1. \u041f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u0433\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u043a\u0438. \u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043e\u0441\u043d\u043e\u0432\u044b \u0433\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u043a\u0438. \u0413\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0441\u0438\u043c\u0432\u043e\u043b\u044b \u0438 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u044b. \u0412\u0438\u0434\u044b \u0438 \u0441\u0432\u043e\u0439\u0441\u0442\u0432\u0430 \u0433\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0436\u0438\u0434\u043a\u043e\u0441\u0442\u0435\u0439.", None))
         self.two_learn.setText(QCoreApplication.translate("MainWindow", u"2.\u0425\u0430\u0440\u0430\u043a\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043a\u0438 \u043e\u0431\u044a\u0435\u043c\u043d\u043e\u0433\u043e \u043d\u0435\u0440\u0435\u0433\u0443\u043b\u0438\u0440\u0443\u0435\u043c\u043e\u0433\u043e \u043d\u0430\u0441\u043e\u0441\u0430.", None))

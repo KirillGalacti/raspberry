@@ -1,0 +1,38 @@
+{
+    "question": [
+      "Вопрос1. ?",
+      "Вопрос2. ?",
+      "Вопрос3. ?",
+      "Вопрос4. ?",
+      "Вопрос5. ?"
+    ],
+    "answer": [
+      1,
+      2,
+      3,
+      4
+    ],
+    "options": [
+  
+      ["Chandigarh",
+        "Kolkata",
+        "Delhi",
+        "Bangalore"
+      ],
+      ["Jaipur",
+        "Delhi",
+        "Chennai",
+        "Mumbai"
+      ],
+      ["Rajasthan",
+        "Punjab",
+        "Goa",
+        "Bihar"
+      ],
+      ["Lucknow",
+        "Agra",
+        "Bhopal",
+        "Delhi"
+      ]
+    ]
+  }

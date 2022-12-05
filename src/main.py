@@ -11,10 +11,6 @@ import sys
 import os
 from PySide2 import *
 
-import RPi.GPIO as GPIO
-import time
-import smbus
-
 ########################################################################
 # IMPORT GUI FILE
 from ui_interface import *
@@ -24,12 +20,8 @@ from ui_interface import *
 # IMPORT Custom widgets
 from Custom_Widgets.Widgets import *
 ########################################################################
-#SLAVE ADDRESS
-bus = smbus.SMBus(1)
 
-SLAVE_ADDRESS_1 = 0x08
-SLAVE_ADDRESS_2 = 0x09
-SLAVE_ADDRESS_3 = 0x0a
+
 ########################################################################
 ## MAIN WINDOW CLASS
 ########################################################################
@@ -82,8 +74,6 @@ class MainWindow(QMainWindow):
         self.ui.theerteen_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_theerteen_learn))
 
         self.ui.fourteen_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_fourteen_learn))
-
-        #PAGES ROBOT ARMS
 
         ## SHOW ==> MAIN WINDOW
         ########################################################################
