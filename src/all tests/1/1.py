@@ -133,19 +133,16 @@ class Block:
         # Инициализация боксов выбора ответов
 
         self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
-        self.check1 = IO.input(26)
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
+        self.box1 = IO.input(26)
 
         self.check2 = tk.IntVar()
-        self.chek2 = IO.input(19)
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
 
         self.check3 = tk.IntVar()
-        self.chek3 = IO.input(13)
         self.box3 = Checkbutton(text='3', variable=self.check3, font=('Arial Bold', 12))
 
         self.check4 = tk.IntVar()
-        self.chek4 = IO.input(6)
         self.box4 = Checkbutton(text='4', variable=self.check4, font=('Arial Bold', 12))
 
         # Инициализация нажатия сенсорных кнопок
