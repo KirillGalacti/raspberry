@@ -45,17 +45,10 @@ class Quiz:
             self.display_question()
             self.display_opyions()
 
-    def sensor_next_btn(self):
-        if self.check_answer(GPIO.input(16) == True):
-            self.correct += 1
-        self.q_no += 1
-        if self.q_no == self.data_size:
-            self.display_result()
-        else:
-            self.display_question()
-            self.display_opyions()
     def buttons(self):
          
+        GPIO.add_event_detection(5, GPIO.RISING, callback = next_btn)
+        
         next_button = Button(gui, text="Дальше",command=self.next_btn,
         width=10,bg="blue",fg="white",font=("ariel",16,"bold"))
          
@@ -85,12 +78,17 @@ class Quiz:
         title.place(x=0, y=2)
  
     def radio_buttons(self):
-        q_list = []
-        y_pos = 150            
-        radio_btn_1 = Radiobutton(gui,text=" ",variable=self.opt_selected, value = len(q_list)+1,font = ("ariel",14))           
-        q_list.append(radio_btn)
-        radio_btn.place(x = 100, y = y_pos)     
-        y_pos += 40
+        self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
+        self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
+
+        self.check2 = tk.IntVar()
+        self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
+
+        self.check3 = tk.IntVar()
+        self.box3 = Checkbutton(text='3', variable=self.check3, font=('Arial Bold', 12))
+
+        self.check4 = tk.IntVar()
+        self.box4 = Checkbutton(text='4', variable=self.check4, font=('Arial Bold', 12))
     
     def sensor_button(self):
         if()

@@ -80,10 +80,6 @@ RandomState = tk.IntVar(True)  # в данную переменную запис
 #                   relief='solid',
 #                   bd='1'
 #                   )
-box['command'] = accept
-box.place(x=12, y=20)
-
-window.mainloop()
 
 
 #######################################
