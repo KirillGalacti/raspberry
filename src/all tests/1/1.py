@@ -5,13 +5,13 @@ import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
 from tkinter import scrolledtext
-import RPi.GPIO as GPIO
+import RPi.GPIO as IO
 
-GPIO.setup(26, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-GPIO.setup(19, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-GPIO.setup(13, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-GPIO.setup(6, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
-GPIO.setup(5, GPIO.IN, pull_up_down = GPIO.PUD_DOWN)
+IO.setup(26, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(19, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(13, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(6, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(5, IO.IN, pull_up_down = IO.PUD_DOWN)
 
 ################################
 # Загрузка теста и его парсинг
@@ -73,14 +73,17 @@ window['bg'] = 'white'
 def accept():
     window.destroy()
 
-RandomState = tk.IntVar(True)  # в данную переменную записывается состояние box (1 или 0)
-# box = Checkbutton(window, text='Включить случайный порядок?',
-#                   variable=RandomState,
-#                   font=('Arial Bold', 10),
-#                   relief='solid',
-#                   bd='1'
-#                   )
+RandomState = tk.IntVar()  # в данную переменную записывается состояние box (1 или 0)
+box = Checkbutton(window, text='Включить случайный порядок?',
+                    variable=RandomState,
+                    font=('Arial Bold', 10),
+                    relief='solid',
+                    bd='1'
+                    )
+box['command'] = accept
+box.place(x=12, y=20)
 
+window.mainloop()
 
 #######################################
 # Получение списка с порядком вопросов.
@@ -94,9 +97,8 @@ np1 = np.arange(len(Text_q))
 order_list = np1.tolist()
 
 # Если выбран рандомный режим, то перемешиваем порядок вопросов
-if RandomState.get(True):
+if RandomState.get():
     random.shuffle(order_list)
-
 
 #########################
 # Блок обработки событий.
@@ -131,29 +133,30 @@ class Block:
         # Инициализация боксов выбора ответов
 
         self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
+        self.check1 = IO.input(26)
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
 
         self.check2 = tk.IntVar()
+        self.chek2 = IO.input(19)
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
 
         self.check3 = tk.IntVar()
+        self.chek3 = IO.input(13)
         self.box3 = Checkbutton(text='3', variable=self.check3, font=('Arial Bold', 12))
 
         self.check4 = tk.IntVar()
+        self.chek4 = IO.input(6)
         self.box4 = Checkbutton(text='4', variable=self.check4, font=('Arial Bold', 12))
 
         # Инициализация нажатия сенсорных кнопок
-        GPIO.add_event_detection(26, GPIO.RISING, callback = button_callback)
-        GPIO.add_event_detection(19, GPIO.RISING, callback = button_callback)
-        GPIO.add_event_detection(13, GPIO.RISING, callback = button_callback)
-        GPIO.add_event_detection(6, GPIO.RISING, callback = button_callback)
-        GPIO.add_event_detection(5, GPIO.RISING, callback = next_callback)
+        # IO.add_event_detection(26, IO.RISING, callback = check_1)
+        # IO.add_event_detection(19, IO.RISING, callback = check_2)
+        # IO.add_event_detection(13, IO.RISING, callback = check_3)
+        # IO.add_event_detection(6, IO.RISING, callback = check_4)
+        # IO.add_event_detection(5, IO.RISING, callback = next_callback)
 
         # Инициализация лэйблов и кнопок
         self.mark = tk.Label(window, text='Выберите ответы: ', font=('Arial Bold', 12), fg='Green', bg='white')
-
-        self.ButGiveAns = Button(text='Ответить', font=('Arial Bold', 12))  # кнопка перехода в состояние "ПРОВЕРКА"
-        self.ButGiveAns['command'] = self.show_res
 
         self.ButNext = Button(text='Следующий', font=('Arial Bold', 12))  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
         self.ButNext['command'] = self.next_q
@@ -171,16 +174,6 @@ class Block:
         self.ButGiveAns.place(x=480, y=420)
         self.ButNext.place(x=580, y=420)
 
-    #Функция обработки нажатия сенсорных кнопок 
-    def check_1(channel):
-        answers[0] = self.check1.get()
-    def check_2(channel):
-        answers[1] = self.check2.get()
-    def check_3(channel):
-        answers[2] = self.check3.get()
-    def check_4(channel):
-        answers[3] = self.check4.get()
-
     # Функция обработки события "ПРОВЕРКА" (нажатие кнопки "Ответить")
     def show_res(self):
 
@@ -188,25 +181,14 @@ class Block:
         index = order_list[self.qc]
 
         # создаем вектор таргетов и ответов
-        targets = flags[5 * index: 5 * index + 5]
-        answers = np.zeros(5)
+        targets = flags[4 * index: 4 * index + 4]
+        answers = np.zeros(4)
 
         answers[0] = self.check1.get()  # записываем состояние box1 (0 или 1) в нулевой бит вектора answers
         answers[1] = self.check2.get()
         answers[2] = self.check3.get()
         answers[3] = self.check4.get()
 
-        # подсвечиваем истинно верные ответы зелёным цветом (задний фон чекбоксов)
-        for i, box in enumerate([self.box1, self.box2, self.box3, self.box4, self.box5]):
-            if targets[i] == 1:
-                box['bg'] = 'green'
-
-        # проверка ответа пользователя (сравнение вектора ответа с вектором таргета)
-        if (targets == answers).sum() == 5:
-            self.mark['text'] = 'Всё верно'  # меняем текст метки на статус "Всё верно"
-            self.true_points += 1  # исли всё верно, то накидываем очко
-        else:
-            self.mark['text'] = 'Есть ошибки'
 
     # Функция обработки события "СМЕНА ВОПРОСА" (нажатие кнопки "Следующий")
     def next_q(self):

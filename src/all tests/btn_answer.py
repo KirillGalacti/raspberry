@@ -1,83 +1,133 @@
-import RPi.GPIO as GPIO
+import numpy as np
+import re
+import random
+import tkinter as tk
 from tkinter import *
-from gpiozero import Button
-from tkinter import messagebox as mb
-import json
+from tkinter import filedialog
+from tkinter import scrolledtext
 
-GPIO.setup(26, GPIO.IN)
-GPIO.setup(19, GPIO.IN)
-GPIO.setup(13, GPIO.IN)
-GPIO.setup(6, GPIO.IN)
-GPIO.setup(5, GPIO.IN)
 
-class Quiz:
-    def __init__(self):
-        self.q_no = 0
-        self.display_title()
-        self.display_question()
-        self.opt_selected = IntVar()
-        self.opts = self.radio_buttons()
-        self.display_options()
-        self.data_size = len(question)
-        self.correct = 0
+################################
+# Загрузка теста и его парсинг
+################################
 
-    def display_result(self):
-        wrong_count = self.data_size - self.correct
-        correct = f"Правильно: {self.correct}"
-        wrong = f"Неправильно: {wrong_count}"
-         
-        score = int(self.correct / self.data_size * 100)
-        result = f"Счет: {score}%"
-         
-        mb.showinfo("Результат", f"{result}\n{correct}\n{wrong}")
-    
-    def check_answer(self, q_on):
-        if self.opt_selected.get() ==[q_no]
-            return True
+window = tk.Tk()
 
-    def next_btn(self):
-        if self.check_answer(self.q_no):
-            self.correct += 1
-        self.q_no += 1
-        if self.q_no == self.data_size:
-            self.display_result()
-        else:
-            self.display_question()
-            self.display_opyions()
+# Пользователь указывает путь к txt файлу
+text_path = filedialog.askopenfilename(title='Выберите тест')
 
-    def buttons(self):
-         
-        GPIO.add_event_detection(5, GPIO.RISING, callback = next_btn)
-        
-        next_button = Button(gui, text="Дальше",command=self.next_btn,
-        width=10,bg="blue",fg="white",font=("ariel",16,"bold"))
-         
-        next_button.place(x=350,y=380)
-         
-        quit_button = Button(gui, text="Выход", command=gui.destroy,
-        width=5,bg="black", fg="white",font=("ariel",16," bold"))
-         
-        quit_button.place(x=700,y=50)
+window.destroy()
 
-    def display_options(self):
-        val=0
+# читаем содержимое файла и удаляем табуляцию
+with open(text_path, 'r', encoding='utf-8') as file:
+    Text = file.read()
+    Text = Text.replace("\t", "")
 
-        self.opt_selected.set(0)
-         
-        for option in options[self.q_no]:
-            self.opts[val]['text']=option
-            val+=1
+# разделяем файл на строки по пробелам и удаляем пустые строки
+Text = Text.split(sep='\n')
 
-     def display_question(self):
+# отделяем вопросы
+pattern = r'^\d{1,3}\.'  # строка начинается с 1 или 2 цыфр, а затем идёт точка (ограничение на 999 вопросов!!!)
+Text_q = [i for i in Text if len(re.findall(pattern, i)) != 0]
+print('Всего вопросов:', len(Text_q))
 
-        q_no = Label(gui, text=question[self.q_no], width=60, font=( 'ariel' ,16, 'bold' ), anchor= 'w' )
-        q_no.place(x=70, y=100)
- 
-    def display_title(self):
-        title = Label(gui, text="...", width=50, bg="green",fg="white", font=("ariel", 20, "bold"))
-        title.place(x=0, y=2)
- 
-    def radio_buttons(self):
+# отделяем ответы
+pattern = r'^.\)'  # строка начинается с одного любого символа, а затем идёт скобка
+Text_a = [i for i in Text if len(re.findall(pattern, i)) != 0]
+print('Всего ответов:', len(Text_a))
+
+# создаем список с ответами без "+" и массив с метками
+pattern = r'\+'  # ищем строки с меткой +
+Text_a_last = []
+flags = np.zeros(100)
+
+for i, st in enumerate(Text_a):
+    if len(re.findall(pattern, st)) != 0:  # если в строке найдены метки
+        new_i = re.sub(r'\+', '', st)  # удаляем ВСЕ метки
+        Text_a_last.append(new_i)
+        flags[i] = 1
+    else:
+        Text_a_last.append(st)
+
+Text_a = Text_a_last
+print('Кол-во верных ответов:', flags.sum())
+
+
+################################################################
+# Выбор режима (Рандомный порядок вопросов vs обычный порядок).
+################################################################
+
+window = tk.Tk()
+window.title('Конструктор тестов (VladislavSoren)')
+window.resizable(width=False, height=False)
+window.geometry('240x60+600+300')
+window['bg'] = 'white'
+
+# функция закрытия окна при выборе рандомного режима
+def accept():
+    window.destroy()
+
+RandomState = tk.IntVar()  # в данную переменную записывается состояние box (1 или 0)
+box = Checkbutton(window, text='Включить случайный порядок?',
+                  variable=RandomState,
+                  font=('Arial Bold', 10),
+                  relief='solid',
+                  bd='1'
+                  )
+box['command'] = accept
+box.place(x=12, y=20)
+
+window.mainloop()
+
+
+#######################################
+# Получение списка с порядком вопросов.
+#######################################
+
+Text_q_dict = {}
+for i, q in enumerate(Text_q):
+    Text_q_dict[i] = q
+
+np1 = np.arange(len(Text_q))
+order_list = np1.tolist()
+
+# Если выбран рандомный режим, то перемешиваем порядок вопросов
+if RandomState.get():
+    random.shuffle(order_list)
+
+
+#########################
+# Блок обработки событий.
+#########################
+
+class Block:
+
+    # Инициализация объектов
+    def __init__(self, master):
+
+        # счетчик количества вопросов
+        self.qc = 0
+
+        # счетчик количества правильных ответов
+        self.true_points = 0
+
+        # Инициализация вопроса и ответов
+        self.quest = scrolledtext.ScrolledText(window, width=75, height=5)
+        index = order_list[self.qc]  # индекс вопроса определяем по order_list
+        self.quest.insert(tk.INSERT, Text_q[index])
+
+        self.ans = scrolledtext.ScrolledText(window, width=75, height=15)
+        self.ans.insert(tk.INSERT,
+                        f'''
+        {Text_a[5 * index + 0]}
+        {Text_a[5 * index + 1]}
+        {Text_a[5 * index + 2]}
+        {Text_a[5 * index + 3]}
+        {Text_a[5 * index + 4]}
+        '''
+                        )
+
+        # Инициализация боксов выбора ответов
         self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
 
@@ -89,22 +139,114 @@ class Quiz:
 
         self.check4 = tk.IntVar()
         self.box4 = Checkbutton(text='4', variable=self.check4, font=('Arial Bold', 12))
-    
-    def sensor_button(self):
-        if()
 
-gui = Tk()
-gui.geometry("800x450")
-gui.title("Контроль")
- 
-with open('data.json') as f:
-    data = json.load(f)
+        self.check5 = tk.IntVar()
+        self.box5 = Checkbutton(text='5', variable=self.check5, font=('Arial Bold', 12))
 
-question = (data['question'])
-options = (data['options'])
-answer = (data[ 'answer'])
- 
+        # Инициализация лэйблов и кнопок
+        self.mark = tk.Label(window, text='Выберите ответы: ', font=('Arial Bold', 12), fg='Green', bg='white')
 
-quiz = Quiz()
-gui.mainloop()
+        self.ButGiveAns = Button(text='Ответить', font=('Arial Bold', 12))  # кнопка перехода в состояние "ПРОВЕРКА"
+        self.ButGiveAns['command'] = self.show_res
 
+        self.ButNext = Button(text='Следующий', font=('Arial Bold', 12))  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
+        self.ButNext['command'] = self.next_q
+
+        # Позиционирование виджитов
+        self.quest.place(x=50, y=25)
+        self.ans.place(x=50, y=150)
+
+        self.box1.place(x=220, y=420)
+        self.box2.place(x=270, y=420)
+        self.box3.place(x=320, y=420)
+        self.box4.place(x=370, y=420)
+        self.box5.place(x=420, y=420)
+
+        self.mark.place(x=50, y=420)
+        self.ButGiveAns.place(x=480, y=420)
+        self.ButNext.place(x=580, y=420)
+
+    # Функция обработки события "ПРОВЕРКА" (нажатие кнопки "Ответить")
+    def show_res(self):
+
+        # определяем текущий индекс вопроса
+        index = order_list[self.qc]
+
+        # создаем вектор таргетов и ответов
+        targets = flags[5 * index: 5 * index + 5]
+        answers = np.zeros(5)
+
+        answers[0] = self.check1.get()  # записываем состояние box1 (0 или 1) в нулевой бит вектора answers
+        answers[1] = self.check2.get()
+        answers[2] = self.check3.get()
+        answers[3] = self.check4.get()
+
+
+        # подсвечиваем истинно верные ответы зелёным цветом (задний фон чекбоксов)
+        for i, box in enumerate([self.box1, self.box2, self.box3, self.box4, self.box5]):
+            if targets[i] == 1:
+                box['bg'] = 'green'
+
+        # проверка ответа пользователя (сравнение вектора ответа с вектором таргета)
+        if (targets == answers).sum() == 5:
+            self.mark['text'] = 'Всё верно'  # меняем текст метки на статус "Всё верно"
+            self.true_points += 1  # исли всё верно, то накидываем очко
+        else:
+            self.mark['text'] = 'Есть ошибки'
+
+            # Функция обработки события "СМЕНА ВОПРОСА" (нажатие кнопки "Следующий")
+
+    def next_q(self):
+
+        # инкрементируем счётчик вопросов
+        self.qc += 1
+
+        # когда ответили на все вопросы -> подводим итоги
+        if self.qc >= len(Text_q):
+            self.FinalScore = tk.Label(window, text=f'Всего правильных ответов: {self.true_points}',
+                                       font=('Arial Bold', 15), fg='white', bg='grey')
+            self.FinalScore.place(x=360, y=210)
+
+        else:  # в остальных же случаях:
+
+            # определяем текущий индекс вопроса
+            index = order_list[self.qc]
+
+            # удаляем подсветку чекбоксов
+            for i, box in enumerate([self.box1, self.box2, self.box3, self.box4, self.box5]):
+                box['bg'] = 'white'
+                box.deselect()
+
+            # смена вопроса
+            self.quest.delete('1.0', 'end')  # очищаем всё поле с индекса "1" до последнего "end"
+            self.quest.insert(tk.INSERT, Text_q[index])  # выводим следующий вопрос
+
+            # смена ответов
+            self.ans.delete('1.0', 'end')
+            self.ans.insert(tk.INSERT,
+                            f'''
+            {Text_a[5 * index + 0]}
+            {Text_a[5 * index + 1]}
+            {Text_a[5 * index + 2]}
+            {Text_a[5 * index + 3]}
+            {Text_a[5 * index + 4]}
+            '''
+                            )
+
+            # изменяем статус метки
+            self.mark['text'] = 'Выберите ответы: '
+
+
+#################
+# Основной цикл.
+#################
+
+window = tk.Tk()
+window.title('Конструктор тестов (VladislavSoren)')
+window.resizable(width=False, height=False)
+window.geometry('720x480+400+100')
+window['bg'] = 'grey'
+
+first_block = Block(window)
+
+window.mainloop()
