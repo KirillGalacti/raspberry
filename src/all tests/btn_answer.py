@@ -147,10 +147,9 @@ class Block:
         self.mark = tk.Label(window, text='Выберите ответы: ', font=('Arial Bold', 12), fg='Green', bg='white')
 
         self.ButGiveAns = Button(text='Ответить', font=('Arial Bold', 12))  # кнопка перехода в состояние "ПРОВЕРКА"
-        self.ButGiveAns['command'] = self.show_res
 
-        self.ButNext = Button(text='Следующий', font=('Arial Bold', 12))  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
-        self.ButNext['command'] = self.next_q
+
+        self.ButNext = Button(text='Следующий', font=('Arial Bold', 12), command = lambda: [self.show_res(), self.next_q()])  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
 
         # Позиционирование виджитов
         self.quest.place(x=50, y=25)
@@ -163,7 +162,6 @@ class Block:
         self.box5.place(x=420, y=420)
 
         self.mark.place(x=50, y=420)
-        self.ButGiveAns.place(x=480, y=420)
         self.ButNext.place(x=580, y=420)
 
     # Функция обработки события "ПРОВЕРКА" (нажатие кнопки "Ответить")

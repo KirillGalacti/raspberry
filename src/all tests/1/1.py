@@ -88,9 +88,6 @@ box.place(x=12, y=20)
 
 window.mainloop()
 
-def check_1(channel):
-    check1.set(check.get() + 1)
-
 #######################################
 # Получение списка с порядком вопросов.
 #######################################
@@ -106,6 +103,14 @@ order_list = np1.tolist()
 if RandomState.get():
     random.shuffle(order_list)
 
+def button_callback(channel):
+    print("Button was pushed!")
+
+def check_1(channel):
+    check1.set(check1.get() + 1)
+
+GPIO.add_event_detect(26, GPIO.RISING, callback = button_callback)
+GPIO.add_event_detect(19, GPIO.RISING, callback = button_callback)
 #########################
 # Блок обработки событий.
 #########################
@@ -139,18 +144,14 @@ class Block:
         # Инициализация боксов выбора ответов
 
         self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
-        self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12), command = self.nex)
-        IO.add_event_detect(26, IO.RISING, callback = check_1)
+        self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
 
         self.check2 = tk.IntVar()
-        self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
-        IO.add_event_detect(19, IO.RISING, callback = check_2)
-       
+        self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))       
 
         self.check3 = tk.IntVar()
         self.box3 = Checkbutton(text='3', variable=self.check3, font=('Arial Bold', 12))
         
-
         self.check4 = tk.IntVar()
         self.box4 = Checkbutton(text='4', variable=self.check4, font=('Arial Bold', 12))
         
@@ -165,11 +166,7 @@ class Block:
         # Инициализация лэйблов и кнопок
         self.mark = tk.Label(window, text='Выберите ответы: ', font=('Arial Bold', 12), fg='Green', bg='white')
 
-        self.ButGiveAns = Button(text='Ответить', font=('Arial Bold', 12))  # кнопка перехода в состояние "ПРОВЕРКА"
-        self.ButGiveAns['command'] = self.show_res
-
-        self.ButNext = Button(text='Следующий', font=('Arial Bold', 12))  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
-        self.ButNext['command'] = self.next_q
+        self.ButNext = Button(text='Следующий', font=('Arial Bold', 12), command = lambda: [self.show_res(), self.next_q()])  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
 
         # Позиционирование виджитов
         self.quest.place(x=50, y=25)
@@ -181,7 +178,6 @@ class Block:
         self.box4.place(x=370, y=420)
 
         self.mark.place(x=50, y=420)
-        self.ButGiveAns.place(x=480, y=420)
         self.ButNext.place(x=580, y=420)
 
     # Функция обработки события "ПРОВЕРКА" (нажатие кнопки "Ответить")
@@ -252,17 +248,12 @@ class Block:
             # изменяем статус метки
             self.mark['text'] = 'Выберите ответы: '
     
-    def check_1(channel):
-        check1.set(check1.get() + 1)
-    def check_2(channel):
-        check2.set(check2.get() + 1)
+    
+    # def check_1(channel):
+    #     check1.set(check1.get() + 1)
+    # def check_2(channel):
+    #     check2.set(check2.get() + 1)
 
-        #Инициализация нажатия сенсорных кнопок
-        IO.add_event_detect(26, IO.RISING, callback = check_1)
-        IO.add_event_detect(19, IO.RISING, callback = check_2)
-        IO.add_event_detect(13, IO.RISING, callback = check_3)
-        IO.add_event_detect(6, IO.RISING, callback = check_4)
-        IO.add_event_detect(5, IO.RISING, callback = next_q)
 #################
 # Основной цикл.
 #################
