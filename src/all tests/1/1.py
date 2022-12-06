@@ -229,7 +229,7 @@ class Block:
             index = order_list[self.qc]
 
             # удаляем подсветку чекбоксов
-            for i, box in enumerate([self.box1, self.box2, self.box3, self.box4, self.box5]):
+            for i, box in enumerate([self.box1, self.box2, self.box3, self.box4]):
                 box['bg'] = 'white'
                 box.deselect()
 
@@ -241,11 +241,10 @@ class Block:
             self.ans.delete('1.0', 'end')
             self.ans.insert(tk.INSERT,
                             f'''
-            {Text_a[5 * index + 0]}
-            {Text_a[5 * index + 1]}
-            {Text_a[5 * index + 2]}
-            {Text_a[5 * index + 3]}
-            {Text_a[5 * index + 4]}
+            {Text_a[4 * index + 0]}
+            {Text_a[4 * index + 1]}
+            {Text_a[4 * index + 2]}
+            {Text_a[4 * index + 3]}
             '''
                             )
 
