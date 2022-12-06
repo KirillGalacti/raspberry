@@ -103,17 +103,17 @@ order_list = np1.tolist()
 if RandomState.get():
     random.shuffle(order_list)
 
-#Подключение сенсорных кнопок
-# def button_callback(self):
-#     print("Button was pushed!")
+Подключение сенсорных кнопок
+def button_callback(self):
+    print("Button was pushed!")
 
-# def check_1(self):
-#     print("У тебя получилось")
-#     if IO.input(19):
-#         self.check1.set(True)
+def check_1(self):
+    print("У тебя получилось")
+    if IO.input(19):
+        self.check1.set(True)
 
-# IO.add_event_detect(26, IO.RISING, callback = button_callback)
-# IO.add_event_detect(19, IO.RISING, callback = check_1)
+IO.add_event_detect(26, IO.RISING, callback = button_callback)
+IO.add_event_detect(19, IO.RISING, callback = check_1)
 
 while True:
     if IO.input(19) == IO.HIGH:
