@@ -89,7 +89,7 @@ box.place(x=12, y=20)
 window.mainloop()
 
 def check_1(channel):
-    var.set(var.get() + 1)
+    check1.set(check.get() + 1)
 
 #######################################
 # Получение списка с порядком вопросов.
@@ -140,7 +140,7 @@ class Block:
 
         self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12), command = self.nex)
-        IO.add_event_detection(26, IO.RISING, callback = check_1)
+        IO.add_event_detect(26, IO.RISING, callback = check_1)
 
         self.check2 = tk.IntVar()
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
@@ -180,6 +180,7 @@ class Block:
         self.box4.place(x=370, y=420)
 
         self.mark.place(x=50, y=420)
+        self.ButGiveAns.place(x=480, y=420)
         self.ButNext.place(x=580, y=420)
 
     # Функция обработки события "ПРОВЕРКА" (нажатие кнопки "Ответить")
