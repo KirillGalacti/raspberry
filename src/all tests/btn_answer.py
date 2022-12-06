@@ -58,7 +58,7 @@ print('Кол-во верных ответов:', flags.sum())
 ################################################################
 
 window = tk.Tk()
-window.title('Конструктор тестов (VladislavSoren)')
+window.title('Контроль')
 window.resizable(width=False, height=False)
 window.geometry('240x60+600+300')
 window['bg'] = 'white'
@@ -128,19 +128,19 @@ class Block:
                         )
 
         # Инициализация боксов выбора ответов
-        self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
+        self.check1 = tk.BooleanVar()  # в данную переменную записывается состояние box1 (1 или 0)
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
 
-        self.check2 = tk.IntVar()
+        self.check2 = tk.BooleanVar()
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
 
-        self.check3 = tk.IntVar()
+        self.check3 = tk.BooleanVar()
         self.box3 = Checkbutton(text='3', variable=self.check3, font=('Arial Bold', 12))
 
-        self.check4 = tk.IntVar()
+        self.check4 = tk.BooleanVar()
         self.box4 = Checkbutton(text='4', variable=self.check4, font=('Arial Bold', 12))
 
-        self.check5 = tk.IntVar()
+        self.check5 = tk.BooleanVar()
         self.box5 = Checkbutton(text='5', variable=self.check5, font=('Arial Bold', 12))
 
         # Инициализация лэйблов и кнопок

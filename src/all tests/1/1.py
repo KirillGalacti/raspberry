@@ -104,16 +104,20 @@ if RandomState.get():
     random.shuffle(order_list)
 
 #Подключение сенсорных кнопок
-def button_callback(channel):
-    print("Button was pushed!")
+# def button_callback(self):
+#     print("Button was pushed!")
 
-def check_1(channel):
-    print("У тебя получилось")
-    if GPIO.input(19):
-        self.check1.set(True)
+# def check_1(self):
+#     print("У тебя получилось")
+#     if IO.input(19):
+#         self.check1.set(True)
 
-IO.add_event_detect(26, IO.RISING, callback = button_callback)
-IO.add_event_detect(19, IO.RISING, callback = check_1)
+# IO.add_event_detect(26, IO.RISING, callback = button_callback)
+# IO.add_event_detect(19, IO.RISING, callback = check_1)
+
+while True:
+    if IO.input(19) == IO.HIGH:
+        print("Click")
 #########################
 # Блок обработки событий.
 #########################
@@ -146,16 +150,16 @@ class Block:
 
         # Инициализация боксов выбора ответов
 
-        self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
+        self.check1 = tk.BooleanVar()  # в данную переменную записывается состояние box1 (1 или 0)
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
 
-        self.check2 = tk.IntVar()
+        self.check2 = tk.BooleanVar()
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))       
 
-        self.check3 = tk.IntVar()
+        self.check3 = tk.BooleanVar()
         self.box3 = Checkbutton(text='3', variable=self.check3, font=('Arial Bold', 12))
         
-        self.check4 = tk.IntVar()
+        self.check4 = tk.BooleanVar()
         self.box4 = Checkbutton(text='4', variable=self.check4, font=('Arial Bold', 12))
         
 
@@ -267,7 +271,7 @@ class Block:
 #################
 
 window = tk.Tk()
-window.title('Конструктор тестов (VladislavSoren)')
+window.title('Контроль')
 window.resizable(width=False, height=False)
 window.geometry('720x480+400+100')
 window['bg'] = 'grey'
