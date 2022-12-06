@@ -6,7 +6,7 @@ IO.setmode(IO.BCM)
 IO.setup(5,IO.IN)
 IO.setup(6,IO.IN)
 
-while True
+while True:
 def buttonPressed1(channel):
     """This function should be called when GPIO 7 has a rising edge event"""
     global enabled1

@@ -79,14 +79,6 @@ class Ui_MainWindow(object):
 
         self.horizontalLayout_5.addWidget(self.btn_page_home)
 
-        self.btn_page_robot_hand = QPushButton(self.frame_3)
-        self.btn_page_robot_hand.setObjectName(u"btn_page_robot_hand")
-        sizePolicy1.setHeightForWidth(self.btn_page_robot_hand.sizePolicy().hasHeightForWidth())
-        self.btn_page_robot_hand.setSizePolicy(sizePolicy1)
-        self.btn_page_robot_hand.setStyleSheet(u"background-color:rgb(255, 255, 255) ")
-
-        self.horizontalLayout_5.addWidget(self.btn_page_robot_hand)
-
 
         self.horizontalLayout_2.addWidget(self.frame_3)
 
@@ -210,8 +202,85 @@ class Ui_MainWindow(object):
         self.page_two_learn = QWidget()
         self.page_two_learn.setObjectName(u"page_two_learn")
         self.stackedWidget.addWidget(self.page_two_learn)
+        self.test_1 = QWidget()
+        self.test_1.setObjectName(u"test_1")
+        self.test_1.setStyleSheet(u"QCheckBox{\n"
+"	color: white;\n"
+"	background:rgb(85, 170, 255);\n"
+"	height: 35px;\n"
+" 	border-radius:10px;\n"
+"	font-size:15px;\n"
+"}\n"
+"\n"
+"QLabel{\n"
+"	color:white;\n"
+"	font-size: 40px;\n"
+"}")
+        self.horizontalLayout_6 = QHBoxLayout(self.test_1)
+        self.horizontalLayout_6.setObjectName(u"horizontalLayout_6")
+        self.frame_4 = QFrame(self.test_1)
+        self.frame_4.setObjectName(u"frame_4")
+        self.frame_4.setFrameShape(QFrame.StyledPanel)
+        self.frame_4.setFrameShadow(QFrame.Raised)
+        self.verticalLayout_5 = QVBoxLayout(self.frame_4)
+        self.verticalLayout_5.setObjectName(u"verticalLayout_5")
+        self.label_2 = QLabel(self.frame_4)
+        self.label_2.setObjectName(u"label_2")
+        self.label_2.setStyleSheet(u"QCheckBox{\n"
+"	color: white;\n"
+"	background:rgb(85, 170, 255);\n"
+"	height: 35px;\n"
+" 	border-radius:10px;\n"
+"	font-size:15px;\n"
+"}\n"
+"\n"
+"QLabel{\n"
+"	color:white;\n"
+"	font-size: 40px;\n"
+"}")
+
+        self.verticalLayout_5.addWidget(self.label_2)
+
+        self.checkBox_4 = QCheckBox(self.frame_4)
+        self.checkBox_4.setObjectName(u"checkBox_4")
+        self.checkBox_4.setCheckable(True)
+        self.checkBox_4.setChecked(False)
+
+        self.verticalLayout_5.addWidget(self.checkBox_4)
+
+        self.checkBox_3 = QCheckBox(self.frame_4)
+        self.checkBox_3.setObjectName(u"checkBox_3")
+
+        self.verticalLayout_5.addWidget(self.checkBox_3)
+
+        self.checkBox_2 = QCheckBox(self.frame_4)
+        self.checkBox_2.setObjectName(u"checkBox_2")
+
+        self.verticalLayout_5.addWidget(self.checkBox_2)
+
+        self.checkBox = QCheckBox(self.frame_4)
+        self.checkBox.setObjectName(u"checkBox")
+
+        self.verticalLayout_5.addWidget(self.checkBox)
+
+
+        self.horizontalLayout_6.addWidget(self.frame_4)
+
+        self.stackedWidget.addWidget(self.test_1)
         self.page_one_learn = QWidget()
         self.page_one_learn.setObjectName(u"page_one_learn")
+        self.page_one_learn.setStyleSheet(u"QPushButton{\n"
+"	color: white;\n"
+"	background:rgb(85, 170, 255);\n"
+"	height: 35px;\n"
+" 	border-radius:10px;\n"
+"	font-size:15px;\n"
+"}\n"
+"\n"
+"QLabel{\n"
+"	color:white;\n"
+"	font-size: 40px;\n"
+"}")
         self.verticalLayout_2 = QVBoxLayout(self.page_one_learn)
         self.verticalLayout_2.setObjectName(u"verticalLayout_2")
         self.scrollArea_2 = QScrollArea(self.page_one_learn)
@@ -226,6 +295,11 @@ class Ui_MainWindow(object):
         self.textBrowser.setObjectName(u"textBrowser")
 
         self.verticalLayout_4.addWidget(self.textBrowser)
+
+        self.test_one = QPushButton(self.scrollAreaWidgetContents_2)
+        self.test_one.setObjectName(u"test_one")
+
+        self.verticalLayout_4.addWidget(self.test_one)
 
         self.scrollArea_2.setWidget(self.scrollAreaWidgetContents_2)
 
@@ -365,8 +439,7 @@ class Ui_MainWindow(object):
         self.horizontalLayout.addWidget(self.main_body)
 
         MainWindow.setCentralWidget(self.centralwidget)
-        QWidget.setTabOrder(self.btn_page_home, self.btn_page_robot_hand)
-        QWidget.setTabOrder(self.btn_page_robot_hand, self.minimize_window_button)
+        QWidget.setTabOrder(self.btn_page_home, self.minimize_window_button)
         QWidget.setTabOrder(self.minimize_window_button, self.restore_window_button)
         QWidget.setTabOrder(self.restore_window_button, self.close_window_button)
         QWidget.setTabOrder(self.close_window_button, self.scrollArea)
@@ -396,16 +469,21 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         MainWindow.setWindowTitle(QCoreApplication.translate("MainWindow", u"MainWindow", None))
         self.btn_page_home.setText("")
-        self.btn_page_robot_hand.setText(QCoreApplication.translate("MainWindow", u"\u0440\u0443\u043a\u0430", None))
         self.label_3.setText(QCoreApplication.translate("MainWindow", u"\u041b\u0430\u0431\u043e\u0440\u0430\u0442\u043e\u0440\u043d\u044b\u0439 \u043f\u0440\u0430\u043a\u0442\u0438\u043a\u0443\u043c", None))
         self.minimize_window_button.setText("")
         self.restore_window_button.setText("")
         self.close_window_button.setText("")
+        self.label_2.setText(QCoreApplication.translate("MainWindow", u"\u041a\u0430\u043a \u0442\u0435\u0431\u044f \u0437\u043e\u0432\u0443\u0442?", None))
+        self.checkBox_4.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
+        self.checkBox_3.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
+        self.checkBox_2.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
+        self.checkBox.setText(QCoreApplication.translate("MainWindow", u"CheckBox", None))
         self.textBrowser.setHtml(QCoreApplication.translate("MainWindow", u"<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n"
 "<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\n"
 "p, li { white-space: pre-wrap; }\n"
 "</style></head><body style=\" font-family:'MS Shell Dlg 2'; font-size:7.8pt; font-weight:400; font-style:normal;\">\n"
 "<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><span style=\" color:#ffffff;\">12</span></p></body></html>", None))
+        self.test_one.setText(QCoreApplication.translate("MainWindow", u"\u041f\u0440\u043e\u0439\u0442\u0438 \u0442\u0435\u0441\u0442", None))
         self.label.setText(QCoreApplication.translate("MainWindow", u"\u0412\u044b\u0431\u0435\u0440\u0438\u0442\u0435 \u0438\u043d\u0442\u0435\u0440\u0435\u0441\u0443\u044e\u0449\u0438\u0439 \u0432\u0430\u0441 \u0440\u0430\u0437\u0434\u0435\u043b", None))
         self.one_learn.setText(QCoreApplication.translate("MainWindow", u"1. \u041f\u0440\u0438\u043c\u0435\u043d\u0435\u043d\u0438\u0435 \u0433\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u043a\u0438. \u0424\u0438\u0437\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u043e\u0441\u043d\u043e\u0432\u044b \u0433\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u043a\u0438. \u0413\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u0447\u0435\u0441\u043a\u0438\u0435 \u0441\u0438\u043c\u0432\u043e\u043b\u044b \u0438 \u0441\u0442\u0430\u043d\u0434\u0430\u0440\u0442\u044b. \u0412\u0438\u0434\u044b \u0438 \u0441\u0432\u043e\u0439\u0441\u0442\u0432\u0430 \u0433\u0438\u0434\u0440\u0430\u0432\u043b\u0438\u0447\u0435\u0441\u043a\u0438\u0445 \u0436\u0438\u0434\u043a\u043e\u0441\u0442\u0435\u0439.", None))
         self.two_learn.setText(QCoreApplication.translate("MainWindow", u"2.\u0425\u0430\u0440\u0430\u043a\u0442\u0435\u0440\u0438\u0441\u0442\u0438\u043a\u0438 \u043e\u0431\u044a\u0435\u043c\u043d\u043e\u0433\u043e \u043d\u0435\u0440\u0435\u0433\u0443\u043b\u0438\u0440\u0443\u0435\u043c\u043e\u0433\u043e \u043d\u0430\u0441\u043e\u0441\u0430.", None))

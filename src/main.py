@@ -75,6 +75,8 @@ class MainWindow(QMainWindow):
 
         self.ui.fourteen_learn.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.page_fourteen_learn))
 
+        self.ui.test_one.clicked.connect(lambda: self.ui.stackedWidget.setCurrentWidget(self.ui.test_1))
+
         ## SHOW ==> MAIN WINDOW
         ########################################################################
         self.show()
