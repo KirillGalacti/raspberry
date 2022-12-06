@@ -5,6 +5,16 @@ import tkinter as tk
 from tkinter import *
 from tkinter import filedialog
 from tkinter import scrolledtext
+import RPi.GPIO as IO
+
+IO.setwarnings(False)
+IO.setmode(IO.BCM)
+
+IO.setup(26, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(19, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(13, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(6, IO.IN, pull_up_down = IO.PUD_DOWN)
+IO.setup(5, IO.IN, pull_up_down = IO.PUD_DOWN)
 
 
 ################################
