@@ -4,7 +4,10 @@ import RPi.GPIO as IO
 """Setup the GPIO Pins"""
 IO.setmode(IO.BCM)
 IO.setup(5,IO.IN)
+IO.setup(6,IO.IN)
+IO.setup(13,IO.IN)
 
+while True
 def buttonPressed(channel):
     """This function should be called when GPIO 7 has a rising edge event"""
     global enable

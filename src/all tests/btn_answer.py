@@ -105,6 +105,18 @@ order_list = np1.tolist()
 if RandomState.get():
     random.shuffle(order_list)
 
+def check_1(channel):
+    global check1
+    print("Button was pressed1!")
+    check1.set(True)
+
+def check_2(channel):
+    global check2
+    print("Button was pressed2!")
+    check2.set(True)   
+
+IO.add_event_detect(5, IO.RISING, callback = buttonPressed1)
+IO.add_event_detect(6, IO.RISING, callback = buttonPressed2)
 
 #########################
 # Блок обработки событий.
@@ -133,7 +145,6 @@ class Block:
         {Text_a[5 * index + 1]}
         {Text_a[5 * index + 2]}
         {Text_a[5 * index + 3]}
-        {Text_a[5 * index + 4]}
         '''
                         )
 
@@ -156,9 +167,6 @@ class Block:
         # Инициализация лэйблов и кнопок
         self.mark = tk.Label(window, text='Выберите ответы: ', font=('Arial Bold', 12), fg='Green', bg='white')
 
-        self.ButGiveAns = Button(text='Ответить', font=('Arial Bold', 12))  # кнопка перехода в состояние "ПРОВЕРКА"
-
-
         self.ButNext = Button(text='Следующий', font=('Arial Bold', 12), command = lambda: [self.show_res(), self.next_q()])  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
 
         # Позиционирование виджитов
@@ -169,7 +177,6 @@ class Block:
         self.box2.place(x=270, y=420)
         self.box3.place(x=320, y=420)
         self.box4.place(x=370, y=420)
-        self.box5.place(x=420, y=420)
 
         self.mark.place(x=50, y=420)
         self.ButNext.place(x=580, y=420)
@@ -188,7 +195,6 @@ class Block:
         answers[1] = self.check2.get()
         answers[2] = self.check3.get()
         answers[3] = self.check4.get()
-        answers[4] = self.check5.get()
 
         # подсвечиваем истинно верные ответы зелёным цветом (задний фон чекбоксов)
         for i, box in enumerate([self.box1, self.box2, self.box3, self.box4, self.box5]):
@@ -237,7 +243,6 @@ class Block:
             {Text_a[5 * index + 1]}
             {Text_a[5 * index + 2]}
             {Text_a[5 * index + 3]}
-            {Text_a[5 * index + 4]}
             '''
                             )
 
