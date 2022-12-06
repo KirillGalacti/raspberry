@@ -7,8 +7,8 @@ from tkinter import filedialog
 from tkinter import scrolledtext
 import RPi.GPIO as IO
 
-IO.stepwarnings(False)
-IO.setmode(IO.BOARD)
+IO.setwarnings(False)
+IO.setmode(IO.BCM)
 
 IO.setup(26, IO.IN, pull_up_down = IO.PUD_DOWN)
 IO.setup(19, IO.IN, pull_up_down = IO.PUD_DOWN)
