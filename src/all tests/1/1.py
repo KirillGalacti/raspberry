@@ -103,14 +103,17 @@ order_list = np1.tolist()
 if RandomState.get():
     random.shuffle(order_list)
 
+#Подключение сенсорных кнопок
 def button_callback(channel):
     print("Button was pushed!")
 
 def check_1(channel):
-    check1.set(check1.get() + 1)
+    print("У тебя получилось")
+    if GPIO.input(19):
+        self.btn1.set(True)
 
 GPIO.add_event_detect(26, GPIO.RISING, callback = button_callback)
-GPIO.add_event_detect(19, GPIO.RISING, callback = button_callback)
+GPIO.add_event_detect(19, GPIO.RISING, callback = check_1)
 #########################
 # Блок обработки событий.
 #########################
@@ -144,9 +147,11 @@ class Block:
         # Инициализация боксов выбора ответов
 
         self.check1 = tk.IntVar()  # в данную переменную записывается состояние box1 (1 или 0)
+        self.btn1 = tk.Boolean.Var()
         self.box1 = Checkbutton(text='1', variable=self.check1, font=('Arial Bold', 12))
 
         self.check2 = tk.IntVar()
+        self.btn2 = tk.Boolean.Var()
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))       
 
         self.check3 = tk.IntVar()
@@ -194,6 +199,11 @@ class Block:
         answers[1] = self.check2.get()
         answers[2] = self.check3.get()
         answers[3] = self.check4.get()
+
+        answers[0] = self.btn1.get()  # записываем состояние box1 (0 или 1) в нулевой бит вектора answers
+        answers[1] = self.btn2.get()
+        answers[2] = self.btn3.get()
+        answers[3] = self.btn4.get()
 
         # подсвечиваем истинно верные ответы зелёным цветом (задний фон чекбоксов)
         for i, box in enumerate([self.box1, self.box2, self.box3, self.box4]):
