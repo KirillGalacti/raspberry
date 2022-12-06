@@ -146,9 +146,11 @@ class Block:
         # Инициализация лэйблов и кнопок
         self.mark = tk.Label(window, text='Выберите ответы: ', font=('Arial Bold', 12), fg='Green', bg='white')
 
+        self.ButGiveAns = Button(text='Ответить', font=('Arial Bold', 12))  # кнопка перехода в состояние "ПРОВЕРКА"
+        self.ButGiveAns['command'] = self.show_res
+
         self.ButNext = Button(text='Следующий', font=('Arial Bold', 12))  # кнопка перехода в состояние "СМЕНА ВОПРОСА"
         self.ButNext['command'] = self.next_q
-        self.ButNext['command'] = self.show_res
 
         # Позиционирование виджитов
         self.quest.place(x=50, y=25)
@@ -161,6 +163,7 @@ class Block:
         self.box5.place(x=420, y=420)
 
         self.mark.place(x=50, y=420)
+        self.ButGiveAns.place(x=480, y=420)
         self.ButNext.place(x=580, y=420)
 
     # Функция обработки события "ПРОВЕРКА" (нажатие кнопки "Ответить")
@@ -177,6 +180,21 @@ class Block:
         answers[1] = self.check2.get()
         answers[2] = self.check3.get()
         answers[3] = self.check4.get()
+        answers[4] = self.check5.get()
+
+        # подсвечиваем истинно верные ответы зелёным цветом (задний фон чекбоксов)
+        for i, box in enumerate([self.box1, self.box2, self.box3, self.box4, self.box5]):
+            if targets[i] == 1:
+                box['bg'] = 'green'
+
+        # проверка ответа пользователя (сравнение вектора ответа с вектором таргета)
+        if (targets == answers).sum() == 5:
+            self.mark['text'] = 'Всё верно'  # меняем текст метки на статус "Всё верно"
+            self.true_points += 1  # исли всё верно, то накидываем очко
+        else:
+            self.mark['text'] = 'Есть ошибки'
+
+            # Функция обработки события "СМЕНА ВОПРОСА" (нажатие кнопки "Следующий")
 
     def next_q(self):
 
