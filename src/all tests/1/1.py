@@ -144,6 +144,7 @@ class Block:
 
         self.check2 = tk.IntVar()
         self.box2 = Checkbutton(text='2', variable=self.check2, font=('Arial Bold', 12))
+        IO.add_event_detect(19, IO.RISING, callback = check_2)
        
 
         self.check3 = tk.IntVar()
@@ -250,8 +251,18 @@ class Block:
 
             # изменяем статус метки
             self.mark['text'] = 'Выберите ответы: '
+    
+    def check_1(channel):
+        check1.set(check1.get() + 1)
+    def check_2(channel):
+        check2.set(check2.get() + 1)
 
-
+        #Инициализация нажатия сенсорных кнопок
+        IO.add_event_detect(26, IO.RISING, callback = check_1)
+        IO.add_event_detect(19, IO.RISING, callback = check_2)
+        IO.add_event_detect(13, IO.RISING, callback = check_3)
+        IO.add_event_detect(6, IO.RISING, callback = check_4)
+        IO.add_event_detect(5, IO.RISING, callback = next_q)
 #################
 # Основной цикл.
 #################
